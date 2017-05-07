@@ -8,7 +8,7 @@ const db = require('../db/index');
 
 
 const app = express();
-app.port = 3000;
+app.port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
