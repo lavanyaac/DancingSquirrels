@@ -1,13 +1,13 @@
-# Project Name
+# Podiocast
 
-> Pithy project description
+> Find podcasts and play them!
 
 ## Team
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - Ming Feng
+  - Lavanya Chandrashekara
+  - Salih Abuelyaman
+  - Steve Kim
 
 ## Table of Contents
 
