@@ -28,9 +28,7 @@
     "react-router-dom": "^4.1.1",
     "request": "^2.81.0",
     "webpack": "^2.4.1",
-    "xml2js-parser": "^1.1.1"
-  },
-  "devDependencies": {
+    "xml2js-parser": "^1.1.1",
     "babel-cli": "^6.7.5",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
@@ -38,10 +36,12 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.7.2",
     "chai": "^3.5.0",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "mocha": "^3.3.0",
     "react-test-renderer": "^15.5.4",
     "supertest": "^3.0.0"
+  },
+  "devDependencies": {
+        "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
   },
   "babel": {
     "presets": [
