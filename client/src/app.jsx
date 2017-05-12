@@ -127,7 +127,7 @@ class App extends React.Component {
 
             <Route path="/signup" component={Signup} />
             <Route path="/podcasts/episodes"
-\                   component={() => (<PodcastEpisodes podcastEpisodes={this.state.podcastEpisodes} /> )} />
+                  component={() => (<PodcastEpisodes podcastEpisodes={this.state.podcastEpisodes} /> )} />
             <Route
               name="user"
               path="/user/:username"
