@@ -26,6 +26,19 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getHomePage();
+   $.get('/topTen')
+    .done((results) => {
+      this.setState({
+        podcasts: results
+      });
+    })
+  }
+
+  clearSearchResults() {
+    // this.setState({
+    //   podcasts: [],
+    //   podcastEpisodes: {}
+    // });
   }
 
   onSearch(query) {
@@ -35,6 +48,7 @@ class App extends React.Component {
         this.setState({
           podcasts: results
         });
+        this.updateRatings();
       });
   }
 
@@ -69,6 +83,30 @@ class App extends React.Component {
     $.get('/logout');
   }
 
+  updateRatings(){
+    var collectionIds = this.state.podcasts.map((podcast) => {
+      return podcast.collectionId;
+    });
+    $.get('/search-rating', { collectionIds })
+        .done(rating => {
+          if(rating && Object.keys(rating).length > 0){
+            var newPodcasts = this.state.podcasts;
+            rating.forEach(function(val) {
+              for( var item of newPodcasts ){
+                if(item.collectionId === val.podcast_id ){
+                  item.rating = val.rating
+                  break;
+                }
+              }
+            });
+            this.setState({
+              podcasts: newPodcasts
+          });
+        }
+
+      });
+  }
+
   render() {
     return (
       <Router>
@@ -85,8 +123,10 @@ class App extends React.Component {
                                   onClickPodcast={this.onClickPodcast}/> )} />
             <Route path="/login" component={Login} />
             <Route path="/Signup" component={Signup} />
-            <Route path="/podcasts/episodes" 
-                   component={() => (<PodcastEpisodes podcastEpisodes={this.state.podcastEpisodes} /> )} />
+
+            <Route path="/signup" component={Signup} />
+            <Route path="/podcasts/episodes"
+\                   component={() => (<PodcastEpisodes podcastEpisodes={this.state.podcastEpisodes} /> )} />
             <Route
               name="user"
               path="/user/:username"
@@ -94,7 +134,7 @@ class App extends React.Component {
                                   onSearch={this.onSearch}
                                   podcasts={this.state.podcasts}
                                   onClickPodcast={this.onClickPodcast}/> )} />
-                                             
+
 
           </Switch>
         </div>

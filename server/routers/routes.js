@@ -1,5 +1,6 @@
 const express = require('express');
 const UserModel = require('../../db/models/User.js');
+const UserPodcast = require('../../db/models/User_Podcast.js');
 const utils = require('../utils.js');
 
 const router = express.Router();
@@ -58,6 +59,30 @@ router.route('/podcast')
       }
     });
   });
+
+router.route('/search-rating')
+ .get((req, res) => {
+   UserPodcast.fetch("podcast_id", req.query.collectionIds, results => {
+    if (results){
+      res.status(200).send(results);
+    }else{
+      res.status(503).send('Service Unavailable')
+    }
+   });
+ });
+
+ router.route('/addRating')
+ .post((req, res) => {
+   console.log(req.body);
+   UserPodcast.insertOne({ podcast_id: req.body.collectionId, rating: parseInt(req.body.rating)}, results => {
+    console.log(results)
+    if (results){
+      res.status(200).send('success');
+    }else{
+      res.status(404).send('error')
+    }
+   });
+ });
 
 
 module.exports = router;

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
+import ViewRating from './ViewRating.jsx';
+import Rating from './Rating.jsx';
 
 // class PodcastListEntry extends React.Component {
 //   constructor(props) {
@@ -52,8 +54,8 @@ class PodcastListEntry extends React.Component {
     super(props);
 
     this.onClickPodcast = this.onClickPodcast.bind(this);
-  } 
-  
+  }
+
   onClickPodcast() {
     this.props.onClickPodcast(this.props.podcast.feedUrl, this.props.podcast.collectionId, () => {
       this.context.router.history.push('/podcasts/episodes');
@@ -68,8 +70,11 @@ class PodcastListEntry extends React.Component {
           <h4 onClick={this.onClickPodcast}>{this.props.podcast.collectionName}</h4>
           <h5 onClick={this.onClickPodcast}>{this.props.podcast.artistName}</h5>
         </div>
+        {
+            this.props.podcast.rating ? <ViewRating rating={this.props.podcast.rating} /> : null
+        }
       </div>
-    );    
+    );
   }
 
 }
