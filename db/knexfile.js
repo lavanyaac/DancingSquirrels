@@ -1,4 +1,4 @@
-const db = process.env.DATABASE_URL || { database: 'podiocast' };
+const db = process.env.DATABASE_URL || { database: 'newdatabase' };
 
 module.exports = {
 

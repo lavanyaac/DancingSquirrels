@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
+import ViewRating from './ViewRating.jsx';
+import Rating from './Rating.jsx';
 
 class PodcastListEntry extends React.Component {
   constructor(props) {
@@ -41,6 +43,10 @@ class PodcastListEntry extends React.Component {
         <div className='podcast-title-author'>
           <h4 onClick={this.onClickPodcast}>{this.props.podcast.collectionName}</h4>
           <h5 onClick={this.onClickPodcast}>{this.props.podcast.artistName}</h5>
+          {
+            this.props.podcast.rating ? <ViewRating rating={this.props.podcast.rating} /> : null
+          }
+          <Rating collectionId={this.props.podcast.collectionId} />
         </div>
         {
           this.state.renderEpisodes

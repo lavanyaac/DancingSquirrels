@@ -39,6 +39,13 @@ exports.up = function(knex, Promise) {
       table.string('sid').notNullable().collate('default');
       table.json('sess').notNullable();
       table.timestamp('expire', 6).notNullable();
+    }),
+
+    knex.schema.createTable('user_podcast', (table) => {
+      table.increments('id').primary();
+      table.integer('user_id');
+      table.integer('podcast_id');
+      table.integer('rating');
     })
 
   ])

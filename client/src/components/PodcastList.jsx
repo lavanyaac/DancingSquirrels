@@ -7,7 +7,7 @@ var PodcastList = function(props) {
     <div className='podcast-wrapper'>
       {
         props.podcasts.map((podcast, itr) =>
-          <PodcastListEntry key={itr} podcast={podcast} />
+          <PodcastListEntry key={itr} podcast={podcast}/>
         )
       }
     </div>
