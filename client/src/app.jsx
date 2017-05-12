@@ -49,6 +49,7 @@ class App extends React.Component {
           podcasts: results
         });
         this.updateRatings();
+
       });
   }
 
